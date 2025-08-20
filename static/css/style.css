@@ -1,0 +1,306 @@
+/* Custom CSS for PDF ChatBot */
+
+/* Animated Stars Background */
+.stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
+    radial-gradient(2px 2px at 160px 30px, #ddd, transparent);
+  background-repeat: repeat;
+  background-size: 200px 100px;
+  animation: twinkle 4s ease-in-out infinite alternate;
+}
+
+.stars::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(1px 1px at 50px 50px, #fff, transparent),
+    radial-gradient(2px 2px at 100px 25px, rgba(255,255,255,0.7), transparent),
+    radial-gradient(1px 1px at 150px 75px, #eee, transparent);
+  background-repeat: repeat;
+  background-size: 250px 150px;
+  animation: twinkle 3s ease-in-out infinite alternate-reverse;
+}
+
+/* Moving Lines Animation */
+.moving-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.moving-lines::before,
+.moving-lines::after {
+  content: '';
+  position: absolute;
+  width: 1px;
+  height: 100vh;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  animation: moveLine 8s linear infinite;
+}
+
+.moving-lines::before {
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.moving-lines::after {
+  left: 80%;
+  animation-delay: 4s;
+}
+
+/* Keyframe Animations */
+@keyframes twinkle {
+  0% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+@keyframes moveLine {
+  0% {
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+/* Floating Animation for Upload Area */
+.upload-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
+/* Message Animations */
+.message-enter {
+  animation: messageSlideIn 0.3s ease-out;
+}
+
+@keyframes messageSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Typing Animation */
+.typing-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.typing-dots span {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #9CA3AF;
+  animation: typingDots 1.4s infinite ease-in-out;
+}
+
+.typing-dots span:nth-child(1) { animation-delay: -0.32s; }
+.typing-dots span:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes typingDots {
+  0%, 80%, 100% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Pulse Animation for Status Indicators */
+.pulse-green {
+  animation: pulseGreen 2s infinite;
+}
+
+.pulse-red {
+  animation: pulseRed 2s infinite;
+}
+
+@keyframes pulseGreen {
+  0%, 100% {
+    background-color: #10B981;
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  50% {
+    background-color: #059669;
+    box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+  }
+}
+
+@keyframes pulseRed {
+  0%, 100% {
+    background-color: #EF4444;
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+  }
+  50% {
+    background-color: #DC2626;
+    box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
+  }
+}
+
+/* Scrollbar Styling */
+.chat-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+  background: #374151;
+  border-radius: 3px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background: #6B7280;
+  border-radius: 3px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb:hover {
+  background: #9CA3AF;
+}
+
+/* Drag and Drop States */
+.drag-over {
+  border-color: #3B82F6 !important;
+  background-color: rgba(59, 130, 246, 0.1);
+  transform: scale(1.02);
+  transition: all 0.2s ease;
+}
+
+/* Button Hover Effects */
+.btn-hover-scale {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-hover-scale:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Loading Spinner Custom */
+.spinner-border {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 0.2em solid transparent;
+  border-top: 0.2em solid currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Toast Animations */
+.toast-enter {
+  animation: toastSlideIn 0.3s ease-out;
+}
+
+.toast-exit {
+  animation: toastSlideOut 0.3s ease-in;
+}
+
+@keyframes toastSlideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes toastSlideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* Responsive Design Enhancements */
+@media (max-width: 768px) {
+  .stars {
+    background-size: 150px 75px;
+  }
+  
+  .moving-lines::before,
+  .moving-lines::after {
+    animation-duration: 6s;
+  }
+  
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Focus States for Accessibility */
+.focus\:ring-custom:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+/* Custom Border Animations */
+.border-animate {
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  background-size: 200% 200%;
+  animation: borderShine 3s ease-in-out infinite;
+}
+
+@keyframes borderShine {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}

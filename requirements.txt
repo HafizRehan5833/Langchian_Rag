@@ -1,0 +1,17 @@
+fastapi
+uvicorn
+python-multipart
+jinja2
+aiofiles
+pydantic
+starlette
+google-genai
+langchain-community
+langchain-google-genai
+psycopg2-binary
+python-dotenv
+langchain
+pypdf
+itsdangerous
+simsimd
+email-validator
