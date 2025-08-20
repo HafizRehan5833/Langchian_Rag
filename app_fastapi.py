@@ -224,6 +224,7 @@ async def status(request: Request):
 
 # Error handlers are replaced by HTTPException in FastAPI
 
-if __name__ == '__main__':
+if __name__ == "__main__":
+    # for local dev only
     import uvicorn
-    uvicorn.run(app, host='0.0.0.0', port=5000, reload=True)
+    uvicorn.run("app_fastapi:app", host="0.0.0.0", port=8000, reload=True)
